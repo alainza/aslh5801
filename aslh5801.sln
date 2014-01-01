@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aslh5801", "aslh5801\aslh5801.vcxproj", "{CA0256B7-E156-4E26-8327-BEDD34909B1F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rel2bas", "rel2bas\rel2bas.vcxproj", "{38CBFF36-6CA5-4E88-B145-AB1D6F59C4BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{B04E1859-10EE-43D4-ADC1-2C3C8CE02068}"
+	ProjectSection(SolutionItems) = preProject
+		test\hexconv.asm = test\hexconv.asm
+		test\hexconv_z80.asm = test\hexconv_z80.asm
+		test\inverse.asm = test\inverse.asm
+		test\inverse_z80.asm = test\inverse_z80.asm
+		test\Makefile = test\Makefile
+		test\shiftleft.asm = test\shiftleft.asm
+		test\shiftleft_z80.asm = test\shiftleft_z80.asm
+		test\shiftright.asm = test\shiftright.asm
+		test\shiftright_z80.asm = test\shiftright_z80.asm
+		test\using.asm = test\using.asm
+		test\using_z80.asm = test\using_z80.asm
+		test\verif_inverse.txt = test\verif_inverse.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA0256B7-E156-4E26-8327-BEDD34909B1F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CA0256B7-E156-4E26-8327-BEDD34909B1F}.Debug|Win32.Build.0 = Debug|Win32
+		{CA0256B7-E156-4E26-8327-BEDD34909B1F}.Release|Win32.ActiveCfg = Release|Win32
+		{CA0256B7-E156-4E26-8327-BEDD34909B1F}.Release|Win32.Build.0 = Release|Win32
+		{38CBFF36-6CA5-4E88-B145-AB1D6F59C4BB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{38CBFF36-6CA5-4E88-B145-AB1D6F59C4BB}.Debug|Win32.Build.0 = Debug|Win32
+		{38CBFF36-6CA5-4E88-B145-AB1D6F59C4BB}.Release|Win32.ActiveCfg = Release|Win32
+		{38CBFF36-6CA5-4E88-B145-AB1D6F59C4BB}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

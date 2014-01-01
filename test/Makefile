@@ -1,16 +1,13 @@
 all: inverse.txt hexconv.txt shiftleft.txt shiftright.txt using.txt \
-	inverse_z80.rel hexconv_z80.rel shiftleft_z80.rel shiftright_z80.rel using_z80.rel \
-	maths.txt
+	inverse_z80.rel hexconv_z80.rel shiftleft_z80.rel shiftright_z80.rel using_z80.rel
 
-ASMZ80=C:\Download\ASxxx_Assemblers\av5p00\asxv5pxx\asxmak\vs05\exe\asz80.exe
-ASMLH5801=C:\alainza\Developpement\13_Perso\aslh5801\Debug\aslh5801.exe
-REL2BAS=C:\alainza\Developpement\13_Perso\aslh5801\Release\rel2bas.exe
+ASMLH5801=..\Debug\aslh5801.exe
+REL2BAS=..\Debug\rel2bas.exe
 
-maths.rel: maths.asm makefile
-	$(ASMLH5801) -o -s -l maths.asm
+clean:
+	del *.rel *.lst *.sym inverse.txt hexconv.txt shiftleft.txt shiftright.txt using.txt
 
-zaks_8x8.rel: zaks_8x8.asm makefile
-	$(ASMZ80) -o -s -l zaks_8x8.asm
+
 
 inverse_z80.rel: inverse_z80.asm makefile
 	$(ASMLH5801) -o -s -l inverse_z80.asm
@@ -42,10 +39,6 @@ using_z80.rel: using_z80.asm Makefile
 using.rel: using.asm Makefile
 	$(ASMLH5801) -o -s -l using.asm
 
-	
-maths.txt:	maths.rel
-	$(REL2BAS) maths.rel > maths.txt
-			
 inverse.txt:	inverse.rel
 	$(REL2BAS) inverse.rel > inverse.txt
 
@@ -61,7 +54,5 @@ shiftright.txt:	shiftright.rel
 using.txt:	using.rel
 	$(REL2BAS) using.rel > using.txt
 
-clean:
-	del *.rel *.lst *.sym inverse.txt hexconv.txt shiftleft.txt shiftright.txt using.txt
 
 	
