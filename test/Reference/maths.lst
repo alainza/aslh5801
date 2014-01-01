@@ -1,0 +1,30 @@
+ASxxxx Assembler V05.00  (LH 5801), page 1.
+Hexidecimal [16-Bits]
+
+
+
+                              1 ;--------------------------------------------------------
+                              2 ; Extract from PC 1500 Technical Reference.pdf
+                              3 ;--------------------------------------------------------
+                              4 	.module maths
+                              5 	
+                              6 ;--------------------------------------------------------
+                              7 ; code
+                              8 ;--------------------------------------------------------
+                              9 	.area	CODE (ABS)
+   0000                      10 maths:
+   0000 6A F9         [ 6]   11 	ldi ul, 0xf9
+   0002 68 3A         [ 6]   12 	ldi uh, 0x3a
+                             13 	; Copy X value in 0x3af9-0x3afA
+   0004 04            [ 5]   14 	lda xl
+   0005 2E            [ 6]   15 	sta (u)
+   0006 60            [ 5]   16 	inc ul
+   0007 84            [ 5]   17 	lda xh
+   0008 2E            [ 6]   18 	sta (u)
+                             19 	; Increment X
+   0009 40            [ 5]   20 	inc xl
+   000A 81 02                21 	bcr fini
+   000C FD 40         [ 9]   22 	inc xh
+   000E                      23 fini:
+   000E FB            [ 4]   24 	sec	;set carry to return x register in callig variable
+   000F 9A            [11]   25 	rtn

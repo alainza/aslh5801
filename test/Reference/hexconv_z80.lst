@@ -1,0 +1,43 @@
+ASxxxx Assembler V05.00  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexidecimal [16-Bits]
+
+
+
+                              1 ;--------------------------------------------------------
+                              2 ; Extract from PC 1500 Technical Reference.pdf
+                              3 ;--------------------------------------------------------
+                              4 	.module reverse
+                              5 	
+                              6 ;--------------------------------------------------------
+                              7 ; code
+                              8 ;--------------------------------------------------------
+                              9 	.area	CODE (ABS)
+   3AF9                      10 	.org	0x3AF9
+   3AF9                      11 binaryToHexa:
+   3AF9 68 77         [ 4]   12 	ld h,0x77
+   3AFB 6A E0         [ 4]   13 	ld l, 0xe0
+   3AFD 84            [ 4]   14 	ld a, b
+   3AFE BE 3B 14      [ 7]   15 	call binaryToHexa1
+   3B01 61            [ 4]   16 	ldi (hl),a
+   3B02 84            [ 4]   17 	ld a, b
+   3B03 BE 3B 15      [ 7]   18 	call binaryToHexa2
+   3B06 61            [ 4]   19 	ldi (hl),a
+   3B07 04            [ 4]   20 	ld a, c
+   3B08 BE 3B 14      [ 7]   21 	call binaryToHexa1
+   3B0B 61            [ 4]   22 	ldi (hl),a
+   3B0C 04            [ 4]   23 	ld a, c
+   3B0D BE 3B 15      [ 7]   24 	call binaryToHexa2
+   3B10 61            [ 4]   25 	ldi (hl),a
+   3B11 69 00         [ 4]   26 	and (hl), 0x00
+   3B13 9A            [ 4]   27 	ret
+   3B14                      28 binaryToHexa1:
+   3B14 F1            [10]   29 	nex
+   3B15                      30 binaryToHexa2:
+   3B15 B9 0F         [ 4]   31 	and a, 0x0f
+   3B17 B7 0A         [ 4]   32 	cp a, 0x0a
+   3B19 83 03         [ 4]   33 	jr c binaryToHexa3
+   3B1B B3 30         [ 4]   34 	adc a, 0x30
+   3B1D 9A            [ 4]   35 	ret
+   3B1E                      36 binaryToHexa3:
+   3B1E B3 30         [ 4]   37 	adc a, 0x30
+   3B20 9A            [ 4]   38 	ret

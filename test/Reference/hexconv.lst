@@ -1,0 +1,43 @@
+ASxxxx Assembler V05.00  (LH 5801), page 1.
+Hexidecimal [16-Bits]
+
+
+
+                              1 ;--------------------------------------------------------
+                              2 ; Extract from PC 1500 Technical Reference.pdf
+                              3 ;--------------------------------------------------------
+                              4 	.module reverse
+                              5 	
+                              6 ;--------------------------------------------------------
+                              7 ; code
+                              8 ;--------------------------------------------------------
+                              9 	.area	CODE (ABS)
+   3AF9                      10 	.org	0x3AF9
+   3AF9                      11 binaryToHexa:
+   3AF9 68 77         [ 6]   12 	ldi uh,0x77
+   3AFB 6A E0         [ 6]   13 	ldi ul, 0xe0
+   3AFD 84            [ 5]   14 	lda xh
+   3AFE BE 3B 14      [19]   15 	sjp binaryToHexa1
+   3B01 61            [ 6]   16 	sin u
+   3B02 84            [ 5]   17 	lda xh
+   3B03 BE 3B 15      [19]   18 	sjp binaryToHexa2
+   3B06 61            [ 6]   19 	sin u
+   3B07 04            [ 5]   20 	lda xl
+   3B08 BE 3B 14      [19]   21 	sjp binaryToHexa1
+   3B0B 61            [ 6]   22 	sin u
+   3B0C 04            [ 5]   23 	lda xl
+   3B0D BE 3B 15      [19]   24 	sjp binaryToHexa2
+   3B10 61            [ 6]   25 	sin u
+   3B11 69 00         [13]   26 	ani (u), 0x00
+   3B13 9A            [11]   27 	rtn
+   3B14                      28 binaryToHexa1:
+   3B14 F1            [ 6]   29 	aex
+   3B15                      30 binaryToHexa2:
+   3B15 B9 0F         [ 7]   31 	ani a, 0x0f
+   3B17 B7 0A         [ 7]   32 	cpi a, 0x0a
+   3B19 83 03                33 	bcs binaryToHexa3
+   3B1B B3 30         [ 7]   34 	adi a, 0x30
+   3B1D 9A            [11]   35 	rtn
+   3B1E                      36 binaryToHexa3:
+   3B1E B3 30         [ 7]   37 	adi a, 0x30
+   3B20 9A            [11]   38 	rtn

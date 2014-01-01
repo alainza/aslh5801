@@ -1,0 +1,55 @@
+ASxxxx Assembler V05.00  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexidecimal [16-Bits]
+
+
+
+                              1 ;--------------------------------------------------------
+                              2 ; Extract from PC 1500 Technical Reference.pdf
+                              3 ;--------------------------------------------------------
+                              4 	.module shiftLeft
+                              5 	
+                              6 ;--------------------------------------------------------
+                              7 ; code
+                              8 ;--------------------------------------------------------
+                              9 	.area	CODE
+   0000                      10 shiftLeft:
+   0000 FD 88                11 	PUSH BC
+   0002 FD 98                12 	PUSH DE
+   0004 FD A8                13 	PUSH HL
+   0006 A5 76 00      [ 4]   14 	ld a, (0x7600)
+   0009 F1            [10]   15 	nex
+   000A B9 0F         [ 4]   16 	and a,0x0f
+   000C 0A            [ 7]   17 	ld c,a
+   000D A5 76 01      [ 4]   18 	ld a, (0x7601)
+   0010 F1            [10]   19 	nex
+   0011 B9 0F         [ 4]   20 	and a, 0x0f
+   0013 08            [ 4]   21 	ld b,a
+   0014 68 78         [ 4]   22 	ld h, 0x78
+   0016                      23 shiftLeft1:
+   0016 FD 62                24 	dec h
+   0018 6A 4D         [ 4]   25 	ld l, 0x4d
+   001A                      26 shiftLeft2:
+   001A 66            [ 7]   27 	dec hl
+   001B 65            [ 4]   28 	ldi a, (hl)
+   001C 1A            [ 7]   29 	ld e,a
+   001D 25            [ 4]   30 	ld a, (hl)
+   001E 18            [12]   31 	ld d,a
+   001F 84            [ 4]   32 	ld a,b
+   0020 63            [ 4]   33 	ldd (hl),a
+   0021 04            [ 4]   34 	ld a,c
+   0022 2E            [ 7]   35 	ld (hl),a
+   0023 FD 18                36 	ld bc, de
+   0025 88 0D         [ 4]   37 	djl shiftLeft2
+   0027 6C 77         [ 4]   38 	cp h, 0x77
+   0029 93 15         [ 4]   39 	jr c, shiftLeft1
+   002B 04            [ 4]   40 	ld a,c
+   002C F1            [10]   41 	nex
+   002D AE 77 4E      [ 7]   42 	ld (0x774e),a
+   0030 84            [ 4]   43 	ld a,b
+   0031 F1            [10]   44 	nex
+   0032 AE 77 4F      [ 7]   45 	ld (0x774f),a
+   0035 FD 2A         [20]   46 	pop hl
+   0037 FD 1A                47 	pop de
+   0039 FD 0A                48 	pop bc
+   003B F9            [ 6]   49 	rcf
+   003C 9A            [ 4]   50 	ret

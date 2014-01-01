@@ -1,0 +1,16 @@
+XH2
+H 3 areas 1 global symbols 2 banks 1 modes
+M using
+G 00 00 80 81 82 83 84 85 86 87 88 89 8A 8B 8C 8D 8E 8F
+B _CSEG base 0 size 0 map 0 flags 0
+B _DSEG base 0 size 0 map 0 flags 4 fsfx _DS
+S .__.ABS. Def0000
+A _CODE size 0 flags CC80 bank 0
+A _DATA size 0 flags CCC0 bank 1
+A CODE size 1E flags D00
+T 00 00 48 79 4A 00 58 7A BE F7 3F B5 01 CD 96
+R 00 00 00 02
+T 00 0D DF 2A 58 78 5A C0 F5 88 03 14 B9 0F 9B
+R 00 00 00 02
+T 00 1A 02 59 00 9A
+R 00 00 00 02

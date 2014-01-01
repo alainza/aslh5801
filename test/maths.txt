@@ -1,0 +1,10 @@
+10 N = 16
+20 INPUT "Address=";A
+30 FOR I=0 TO N-1
+40 READ B
+50 POKE A+I, B
+60 NEXT I
+70 END
+100 DATA &6A, &F9, &68, &3A, &04, &2E, &60, &84
+110 DATA &2E, &40, &81, &02, &FD, &40, &FB, &9A
+

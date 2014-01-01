@@ -1,0 +1,55 @@
+ASxxxx Assembler V05.00  (LH 5801), page 1.
+Hexidecimal [16-Bits]
+
+
+
+                              1 ;--------------------------------------------------------
+                              2 ; Extract from PC 1500 Technical Reference.pdf
+                              3 ;--------------------------------------------------------
+                              4 	.module shiftLeft
+                              5 	
+                              6 ;--------------------------------------------------------
+                              7 ; code
+                              8 ;--------------------------------------------------------
+                              9 	.area	CODE
+   0000                      10 shiftLeft:
+   0000 FD 88         [14]   11 	psh x
+   0002 FD 98         [14]   12 	psh y
+   0004 FD A8         [14]   13 	psh u
+   0006 A5 76 00      [12]   14 	lda 0x7600
+   0009 F1            [ 6]   15 	aex
+   000A B9 0F         [ 7]   16 	ani a,0x0f
+   000C 0A            [ 5]   17 	sta xl
+   000D A5 76 01      [12]   18 	lda 0x7601
+   0010 F1            [ 6]   19 	aex
+   0011 B9 0F         [ 7]   20 	ani a, 0x0f
+   0013 08            [ 5]   21 	sta xh
+   0014 68 78         [ 6]   22 	ldi uh, 0x78
+   0016                      23 shiftLeft1:
+   0016 FD 62         [ 9]   24 	dec uh
+   0018 6A 4D         [ 6]   25 	ldi ul, 0x4d
+   001A                      26 shiftLeft2:
+   001A 66            [ 5]   27 	dec u
+   001B 65            [ 6]   28 	lin u
+   001C 1A            [ 5]   29 	sta yl
+   001D 25            [ 6]   30 	lda (u)
+   001E 18            [ 5]   31 	sta yh
+   001F 84            [ 5]   32 	lda xh
+   0020 63            [ 6]   33 	sde u
+   0021 04            [ 5]   34 	lda xl
+   0022 2E            [ 6]   35 	sta (u)
+   0023 FD 18                36 	ldx y
+   0025 88 0D                37 	lop shiftLeft2
+   0027 6C 77         [ 7]   38 	cpi uh, 0x77
+   0029 93 15                39 	bcs shiftLeft1
+   002B 04            [ 5]   40 	lda xl
+   002C F1            [ 6]   41 	aex
+   002D AE 77 4E      [12]   42 	sta 0x774e
+   0030 84            [ 5]   43 	lda xh
+   0031 F1            [ 6]   44 	aex
+   0032 AE 77 4F      [12]   45 	sta 0x774f
+   0035 FD 2A         [15]   46 	pop u
+   0037 FD 1A         [15]   47 	pop y
+   0039 FD 0A         [15]   48 	pop x
+   003B F9            [ 4]   49 	rec
+   003C 9A            [11]   50 	rtn

@@ -1,0 +1,28 @@
+XH2
+H 3 areas 1 global symbols 2 banks 1 modes
+M shiftLeft
+G 00 00 80 81 82 83 84 85 86 87 88 89 8A 8B 8C 8D 8E 8F
+B _CSEG base 0 size 0 map 0 flags 0
+B _DSEG base 0 size 0 map 0 flags 4 fsfx _DS
+S .__.ABS. Def0000
+A _CODE size 0 flags CC80 bank 0
+A _DATA size 0 flags CCC0 bank 1
+A CODE size 3D flags D00
+T 00 00
+R 00 00 00 02
+T 00 00 FD 88 FD 98 FD A8 A5 76 00 F1 B9 0F 0A
+R 00 00 00 02
+T 00 0D A5 76 01 F1 B9 0F 08 68 78
+R 00 00 00 02
+T 00 16
+R 00 00 00 02
+T 00 16 FD 62 6A 4D
+R 00 00 00 02
+T 00 1A
+R 00 00 00 02
+T 00 1A 66 65 1A 25 18 84 63 04 2E FD 18 88 0D
+R 00 00 00 02
+T 00 27 6C 77 93 15 04 F1 AE 77 4E 84 F1 AE
+R 00 00 00 02
+T 00 33 77 4F FD 2A FD 1A FD 0A F9 9A
+R 00 00 00 02
